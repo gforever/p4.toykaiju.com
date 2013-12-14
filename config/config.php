@@ -55,7 +55,7 @@
 	if(!defined('SYSTEM_EMAIL')) define('SYSTEM_EMAIL', 'akwong84@gmail.com'); 
 	
 # Default DB name for this app
-    define('DB_NAME', 'p4_toykaiju_com');
+    define('DB_NAME', 'toykaiju_p4');
 		
 
 # Whether or not to send outgoing emails - default to on.

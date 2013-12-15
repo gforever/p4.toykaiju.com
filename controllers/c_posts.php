@@ -19,7 +19,9 @@ class posts_controller extends base_controller{
         $_POST['user_id']  = $this->user->user_id;
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
-		
+        //Add title to post in database /////////// NEW PART////////////////////
+		DB::instance(DB_NAME)->insert('title', $_POST);
+		//Add post to database
 		DB::instance(DB_NAME)->insert('posts', $_POST);
 	   
 	    #Then send user back to view posts

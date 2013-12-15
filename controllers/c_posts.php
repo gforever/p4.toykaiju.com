@@ -1,10 +1,8 @@
 <?php
+
 	if(!$user) {
 	   Router::redirect('/users/login');
 	}
-?>
-
-<?php
 
 class posts_controller extends base_controller{
 	

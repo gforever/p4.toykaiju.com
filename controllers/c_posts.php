@@ -10,6 +10,8 @@ class posts_controller extends base_controller{
 	#}
 	public function add() {
 		#Sets up the view
+        //Add title to post in database /////////// NEW PART////////////////////
+		$this->template->title = View::instance("v_posts_add");
 		$this->template->content = View::instance("v_posts_add");
 		
 		echo $this->template;
@@ -19,9 +21,9 @@ class posts_controller extends base_controller{
         $_POST['user_id']  = $this->user->user_id;
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
-        //Add title to post in database /////////// NEW PART////////////////////
-		DB::instance(DB_NAME)->insert('title', $_POST);
-		//Add post to database
+		//??
+		//DB::instance(DB_NAME)->insert('title', $_POST);
+		
 		DB::instance(DB_NAME)->insert('posts', $_POST);
 	   
 	    #Then send user back to view posts

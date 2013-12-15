@@ -5,7 +5,7 @@
 		   <?=$post['first_name'] .': '?> 
          </span>
  <!--Displays the post -->
-           <?=$post['title']?> 
+           <?=$post['title']?>  <!--NEW -->
            <?=$post['content']?> 
 
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->

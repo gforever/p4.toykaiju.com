@@ -22,6 +22,7 @@ class posts_controller extends base_controller{
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
 		//??
+		$_POST['title'] = $_POST['title'];
 		//DB::instance(DB_NAME)->insert('title', $_POST);
 		
 		DB::instance(DB_NAME)->insert('posts', $_POST);

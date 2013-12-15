@@ -1,4 +1,10 @@
 <?php
+	if(!$user) {
+	   Router::redirect('/users/login');
+	}
+?>
+
+<?php
 
 class posts_controller extends base_controller{
 	
@@ -100,11 +106,13 @@ class posts_controller extends base_controller{
 		
 	public function index() {
         $this->template->content = View::instance('v_posts_index');
+		//ADD ITEMS HERE to display
 		$q= 'SELECT 
                posts.post_id,
                posts.content,
                posts.created,
                posts.user_id AS post_user_id,
+			   posts.title,
                users_users.user_id AS follower_id,
                users.first_name,
                users.last_name

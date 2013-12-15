@@ -5,8 +5,12 @@
 		   <?=$post['first_name'] .': '?> 
          </span>
  <!--Displays the post -->
-           <?=$post['title']?>  <!--NEW -->
-           <?=$post['content']?> 
+           <span class="postTitle">
+		   	<?=$post['title']?>  <!--NEW -->
+           </span>
+           <span class="postContent">
+		   	<?=$post['content']?> 
+           </span>
 
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
         <?php if($user->user_id == $post['post_user_id']): ?>                

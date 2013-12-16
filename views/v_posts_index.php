@@ -26,7 +26,7 @@
             
 
     <?php if($post['priority'] == 'urgent')
-		echo "<script> $('#post').css("color", "red"); </script>";       	
+		echo "<script> $('#post').css('color', 'red'); </script>";       	
 		echo "This is urgent"; 
     ?> 
 

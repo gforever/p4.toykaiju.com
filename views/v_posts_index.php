@@ -39,7 +39,7 @@
 </p>     
 
     <?php if($post['priority'] == 'urgent')
-		echo "<script> $('#post').css('color', 'red'); </script>"; 	
+		echo "<script> $('#post".$post['post_id']."').css('color', 'red'); </script>";
     ?> 
     
 <?php endforeach; ?>

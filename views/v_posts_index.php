@@ -13,7 +13,7 @@
 		   < ?=$post['first_name'] .': '?> 
          </span> -->
  <!--Displays the post -->
-           <div id="post">  
+           <div id="post<?=$post['post_id']?>">  
 			   <span class="postTitle">
                 <?=$post['task']?>  <!--NEW -->
                </span>
@@ -41,7 +41,5 @@
     <?php if($post['priority'] == 'urgent')
 		echo "<script> $('#post').css('color', 'red'); </script>"; 	
     ?> 
-    <?php if($post['priority'] != 'urgent')
-        echo "<script> $('#post').css('color', 'blue'); </script>";      	
-	?>
+    
 <?php endforeach; ?>

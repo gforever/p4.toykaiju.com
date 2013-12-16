@@ -65,13 +65,13 @@ a:hover {
     padding-left: 20px;
 }
 
-#uName {
+#password {
 	font-weight:bold;
 	color: blue;
 	text-align: left;
 }
 
-#uName-output {
+#pass-output {
 	position:absolute;
 	/*top:100px; */
 	text-align:center;
@@ -82,7 +82,8 @@ a:hover {
 #compPost{
 	float:left;
 	}
-#post{
+
+.post{
 	text-decoration:none;
 }
 
@@ -95,3 +96,4 @@ a:hover {
 .editDel{
 	font-size:8px;
 }
+

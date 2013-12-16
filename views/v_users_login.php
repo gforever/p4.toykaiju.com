@@ -3,14 +3,14 @@
 <form method='POST' action='/users/p_login'>
 
     <p>Email</p>
-    <input type='text' name='email' required title="Enter your email address">    
+    <input type='text' name='email' required title="Enter your email">    
 
     <p>Password</p>
     <input type='password' name='password' required title="Enter your password">
     
     <?php if(isset($error)): ?>
          	<div class='error'>
-            	Login failed. Please double check your email and password.
+            	Login failed. Please double check your username and password.
         	</div>
     
     <?php endif; ?>

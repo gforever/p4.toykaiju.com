@@ -5,10 +5,8 @@
 	First name: <input type='text' name='first_name' required title="Enter your first name"><br /> 
 	Last name: <input type='text' name='last_name' required title="Enter your last name"><br />
 	Email: <input type='email' name='email' required title="Enter your email"><br />
-	Username: <input type='text' id="uName" maxlength='20' name='username' required title="Create a Username">
-    <div id='uNameerror'>Max 20 characters</div>
-    Password: <input type='password' name='password' required title="Create a password"><br />
-    
+    Password: <input type='password' id="password" name='password' maxlength='20' required title="Create a password"><br />
+    <div id='pError'>Max 20 characters</div>
     
         <?php if(isset($error)): ?>
         <div class='error'>

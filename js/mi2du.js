@@ -1,7 +1,7 @@
 //Calls the jQuery tooltip function
 $( document ).tooltip();
 
-$('#uName').keyup(function(){
+$('#password').keyup(function(){
 	//Find out what is in this field
 	var value = $(this).val();
 	
@@ -11,16 +11,16 @@ $('#uName').keyup(function(){
 	var how_many_left = 20 - how_many_characters;
 	
 	if(how_many_left == 0){
-		$('#uNameerror').css('color','red');
+		$('#pError').css('color','red');
 	}	
 	else if(how_many_left < 5) {
-		$('#uNameerror').css('color','purple');
+		$('#pError').css('color','purple');
 	}
 	
-	$('#uNameerror').html('You have ' + how_many_left + ' characters left.');
+	$('#pError').html('You have ' + how_many_left + ' characters left.');
 
 	//Place the User Name on the page
-	$('#uName-output').html(value);
+	$('#pass-output').html(value);
 });
 
 $('.colors').click(function(){

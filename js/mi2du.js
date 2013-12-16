@@ -1,7 +1,7 @@
 //Calls the jQuery tooltip function
 $( document ).tooltip();
 
-$('#kName').keyup(function(){
+$('#uName').keyup(function(){
 	//Find out what is in this field
 	var value = $(this).val();
 	
@@ -11,23 +11,16 @@ $('#kName').keyup(function(){
 	var how_many_left = 20 - how_many_characters;
 	
 	if(how_many_left == 0){
-		$('#kName-error').css('color','red');
+		$('#uNameerror').css('color','red');
 	}	
 	else if(how_many_left < 5) {
-		$('#kName-error').css('color','purple');
+		$('#uNameerror').css('color','purple');
 	}
 	
-	$('#kName-error').html('You have ' + how_many_left + ' characters left.');
-	/*
-    if(how_many_characters == 14) {
-		$('#recipient-error').html('You\'ve reached the max amount of characters');
-	}
-	else {
-		$('#recipient-error').html('');
-	} */
-	
-	//Place the Kaiju Name in the canvas
-	$('#kName-output').html(value);
+	$('#uNameerror').html('You have ' + how_many_left + ' characters left.');
+
+	//Place the User Name on the page
+	$('#uName-output').html(value);
 });
 
 $('.colors').click(function(){

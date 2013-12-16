@@ -3,10 +3,10 @@
 <form method='POST' action='/users/p_login'>
 
     <p>Email</p>
-    <input type='text' name='email' required>    
+    <input type='text' name='email' required title="Enter your email address">    
 
     <p>Password</p>
-    <input type='password' name='password' required>
+    <input type='password' name='password' required title="Enter your password">
     
     <?php if(isset($error)): ?>
          	<div class='error'>

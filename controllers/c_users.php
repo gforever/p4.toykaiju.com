@@ -11,7 +11,7 @@ class users_controller extends base_controller {
     }
 
     public function signup($error = NULL) {
-		$this->template->title = "Squeaker Sign Up"; 
+		$this->template->title = "Mi2Du Sign Up"; 
 		#set up the view
 		$this->template->content = View::instance('v_users_signup');	
 
@@ -46,7 +46,7 @@ class users_controller extends base_controller {
 	}
 
     public function login($error = NULL) {
-		$this->template->title = "Squeaker Login"; 
+		$this->template->title = "Mi2Du Login"; 
       	# Set up the view
         $this->template->content = View::instance("v_users_login");
 
@@ -89,7 +89,7 @@ class users_controller extends base_controller {
 	}
 
     public function logout() {
-		$this->template->title = "Squeaker Logout"; 
+		$this->template->title = "Mi2Du Logout"; 
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		$data = Array('token' => $new_token);
         DB::instance(DB_NAME)->update('users',$data, 'WHERE user_id ='. $this->user->user_id);
@@ -101,7 +101,7 @@ class users_controller extends base_controller {
     }
 
     public function profile($user_name = NULL) {
-		$this->template->title = "Squeaker Profile"; 
+		$this->template->title = "Mi2Du Profile"; 
 		if(!$this->user){
 		   //Router::redirect('/');	
 		   die('Members only. <a href="/users/login">Login</a>');

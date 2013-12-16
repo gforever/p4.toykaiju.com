@@ -9,9 +9,10 @@ class posts_controller extends base_controller{
 	#	}
 	#}
 	public function add() {
+		$this->template->title = "Mi2Du Add Task"; 
 		#Sets up the view
         //Add title to post in database /////////// NEW PART////////////////////
-		$this->template->title = View::instance("v_posts_add");
+		$this->template->task = View::instance("v_posts_add");
 		$this->template->content = View::instance("v_posts_add");
 		
 		echo $this->template;
@@ -22,7 +23,7 @@ class posts_controller extends base_controller{
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
 		//??
-		$_POST['title'] = $_POST['title'];
+		$_POST['task'] = $_POST['task'];
 		//DB::instance(DB_NAME)->insert('title', $_POST);
 		
 		DB::instance(DB_NAME)->insert('posts', $_POST);
@@ -52,6 +53,7 @@ class posts_controller extends base_controller{
 	
 	public function edit($post_id = 0) {
 		 # Set up view
+		 $this->template->title = "Mi2Du Edit Task"; 
          $this->template->content = View::instance("v_posts_edit");
          #Check to see if the post id exists
 		 if($post_id < 1) {  
@@ -84,10 +86,14 @@ class posts_controller extends base_controller{
 		$poster_id = $post['user_id'];
 		# If the user id matches with the user who made the post, then allow editing 
 		if ($this->user->user_id == $poster_id) {
+			$task = $_POST['task'];
 			$content = $_POST['content'];
+			$priority =$_POST['priority'];
 			# Update their row in the DB with the new token
 			$data = Array(
-				'content' => $content
+				'task' =>$task,
+				'content' => $content,
+				'priority'=> $priority
 			);
 			DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
 			Router::redirect('/posts');
@@ -99,6 +105,7 @@ class posts_controller extends base_controller{
 ########END OF +1 FEATURES#######################################################
 		
 	public function index() {
+		$this->template->title = "Mi2Du View Tasks"; 
         $this->template->content = View::instance('v_posts_index');
 		//ADD ITEMS HERE to display
 		$q= 'SELECT 
@@ -106,7 +113,7 @@ class posts_controller extends base_controller{
                posts.content,
                posts.created,
                posts.user_id AS post_user_id,
-			   posts.title,
+			   posts.task,
 			   posts.priority,
                users_users.user_id AS follower_id,
                users.first_name,

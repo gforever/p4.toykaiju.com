@@ -51,7 +51,7 @@
 
 # Default app settings
 	if(!defined('APP_EMAIL')) define('APP_EMAIL', 'awong@fas.harvard.edu'); # Should match domain name to avoid hitting the spam box
-	if(!defined('APP_NAME')) define('APP_NAME', 'Sqeaker'); # Should match domain name to avoid hitting the spam box
+	if(!defined('APP_NAME')) define('APP_NAME', 'Mi2Du'); # Should match domain name to avoid hitting the spam box
 	if(!defined('SYSTEM_EMAIL')) define('SYSTEM_EMAIL', 'akwong84@gmail.com'); 
 	
 # Default DB name for this app

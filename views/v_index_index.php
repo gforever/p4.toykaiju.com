@@ -5,10 +5,10 @@
 	  print_r($user);
 	  ?>
     </pre> -->
-    Hello <?=$user->first_name; ?>
+    <p>Hello <?=$user->first_name; ?></p>
 <?php else: ?>
-  <h1> Welcome to Sqeaker</h1> <br /> 
-  <img src="/imgs/sqeaker.jpg" width="300" height="203" alt="SqeakerLogo" /> <br />
-  <p>Please sign up or log in and have fun posting your sqeaks! <br />
-  +1 features include: Edit a Post and Delete a Post. </p>
+  <h1> Welcome to MiToDu</h1> <br /> 
+  <img src="/imgs/mi2du.png" width="300" height="300" alt="Mi2DuLogo" /> <br />
+  <p>Please sign up or log in for your to do list! <br />
+  Features include: Edit a task, Delete a task, Mark task urgent. Javascript Tooltip, calendar select due date. </p>
 <?php endif; ?>

@@ -1,9 +1,5 @@
 <?php
 
-	if(!$user) {
-	   Router::redirect('/users/login');
-	}
-
 class posts_controller extends base_controller{
 	
 	#public function __construct() {
@@ -111,6 +107,7 @@ class posts_controller extends base_controller{
                posts.created,
                posts.user_id AS post_user_id,
 			   posts.title,
+			   posts.priority,
                users_users.user_id AS follower_id,
                users.first_name,
                users.last_name

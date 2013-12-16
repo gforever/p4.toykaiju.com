@@ -1,8 +1,8 @@
 <form method='POST' action='/posts/p_add/'>
 	Title: <input type='text' name='title' required><br />  <!-- new -->
-    Review: <textarea rows="5" cols="100" name='content' required></textarea><br />
-    
-    <input type='Submit' value = 'Add Review'>
+    Details: <textarea rows="3" cols="30" name='content'></textarea><br />
+    <input type="checkbox" name="priority" value="urgent">Urgent     
+    <input type='Submit' value = 'Add Item'>
 </form> 
    
 

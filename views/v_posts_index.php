@@ -1,23 +1,38 @@
+<?php  if(!$user) {
+	   Router::redirect('/users/login');
+	} ?>
+    
 <?php foreach($posts as $post): ?>
-<p>
+
+
+<p>                       
+	<?php if($post['priority'] == 'urgent')
+	       	echo "this is urgent";			
+    ?> 
  <!--Displays the user's name -->
-         <span class="uName">
-		   <?=$post['first_name'] .': '?> 
-         </span>
+ <!--      <span class="uName">
+		   < ?=$post['first_name'] .': '?> 
+         </span> -->
  <!--Displays the post -->
-           <span class="postTitle">
-		   	<?=$post['title']?>  <!--NEW -->
-           </span>
-           <span class="postContent">
-		   	<?=$post['content']?> 
-           </span>
+           <div id="post">  
+			   <span class="postTitle">
+                <?=$post['title']?>  <!--NEW -->
+               </span>
+               <span class="postContent">
+			<!-- only display content (aka details) when not blank -->
+              <!-- < ?php if($post['content'] != '')?> -->
+                <?=" : ".$post['content']?> 
+              <!-- < ?php endif; ?> -->
+               </span>       
+            </div>
 
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
-        <?php if($user->user_id == $post['post_user_id']): ?>                
+        <span class="editDel">
+		<?php if($user->user_id == $post['post_user_id']): ?>                
          <a href=/posts/edit/<?=$post['post_id']?>>Edit</a> - 
-         <a href=/posts/delete/<?=$post['post_id']?>>Delete</a>        
-        
+         <a href=/posts/delete/<?=$post['post_id']?>>Delete</a>               
         <?php endif; ?>                         
+        </span>
   <!--Displays the time -->
     <span class="postDate"> 
 	    <?=Time::display($post['created'])?><br /> 

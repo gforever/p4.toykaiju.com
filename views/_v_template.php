@@ -7,9 +7,13 @@
 					
 	<!-- JS/CSS File we want on every page -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>				
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 										
 	<!-- Controller Specific JS/CSS -->
-	<link rel="stylesheet" href="/css/sample-app.css" type="text/css">
+	<link rel="stylesheet" href="/css/sample-app.css" type="text/css">  
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+    
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 		
 </head>

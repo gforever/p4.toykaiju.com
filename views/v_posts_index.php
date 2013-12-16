@@ -6,8 +6,8 @@
 
 
 <p>                       
-	<?php if($post['priority'] == 'urgent')
-	       	echo "this is urgent";			
+    <?php if($post['priority'] == 'urgent')
+		echo "<script> $('#post').css(color: Red); </script>"		
     ?> 
  <!--Displays the user's name -->
  <!--      <span class="uName">
@@ -24,7 +24,8 @@
                 <?=" : ".$post['content']?> 
               <!-- < ?php endif; ?> -->
                </span>       
-            </div>
+            </div>          
+            
 
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
         <span class="editDel">

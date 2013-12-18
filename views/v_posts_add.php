@@ -4,6 +4,10 @@
     <input type="checkbox" name="priority" value="urgent" title="Marks your task as urgent">Urgent     
     <input type='Submit' value = 'Add Task'>
 </form> 
+
+
+<!-- Ajax results will go here -->
+<div id='results'></div>
    
 
 

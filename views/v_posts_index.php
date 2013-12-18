@@ -12,7 +12,7 @@
 		   < ?=$post['first_name'] .': '?> 
          </span> -->
  <!--Displays the post -->
-       <li id="post<?=$post['post_id']?>" class="ui-state-default<?=$post['post_id']?>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>  
+       <li id="post<?=$post['post_id']?>" class="ui-state-default<?=$post['post_id']?>">  
 		  <span class="postTitle">
               <?=$post['task']?>  <!--NEW -->
           </span>

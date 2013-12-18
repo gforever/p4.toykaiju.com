@@ -14,22 +14,47 @@ class posts_controller extends base_controller{
         //Add title to post in database /////////// NEW PART////////////////////
 		$this->template->task = View::instance("v_posts_add");
 		$this->template->content = View::instance("v_posts_add");
-		
+
+		#Loads the JS files
+		$client_files_body = Array(
+			"/js/jquery.form.js",
+			"/js/posts_add.js"
+		);
+
+		$this->template->client_files_body = Utils::load_client_files($client_files_body);
+
+		#Renders the template
 		echo $this->template;
 	}
 
 	public function p_add() {
+		#Sets up the data
+		# Associate this post with this user
         $_POST['user_id']  = $this->user->user_id;
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
-		//??
+		#Sets the task title
 		$_POST['task'] = $_POST['task'];
-		//DB::instance(DB_NAME)->insert('title', $_POST);
+
+		#Inserts the post
+		//DB::instance(DB_NAME)->insert('posts', $_POST);///////////////
+		$new_post_id = DB::instance(DB_NAME)->insert('posts',$_POST); //**
 		
-		DB::instance(DB_NAME)->insert('posts', $_POST);
+		#Set up the view **
+		$view = View::instance ('v_posts_p_add'); 
+		
+		#Pass data to the view **
+		$view->created = $_POST['created'];
+		$view->new_post_id = $new_post_id;
+		
+		#Render the view **
+		echo $view;
+		
+	   //Sends a simple message back to user
+	    echo "Your task was added";
 	   
 	    #Then send user back to view posts
-        Router::redirect('/posts');
+        //Router::redirect('/posts'); //////////////////
 	}
 ###########+1 FEATURES##########################################################
 	public function delete($post_id) {
@@ -115,18 +140,20 @@ class posts_controller extends base_controller{
                posts.user_id AS post_user_id,
 			   posts.task,
 			   posts.priority,
-               users_users.user_id AS follower_id,
+               
                users.first_name,
                users.last_name
         FROM posts
-        INNER JOIN users_users 
-           ON posts.user_id = users_users.user_id_followed
+
         INNER JOIN users 
            ON posts.user_id = users.user_id
-        WHERE users_users.user_id = '.$this->user->user_id;
-			
+        WHERE users.user_id = '.$this->user->user_id; //Only allow logged in user to see his/her own tasks. 
+
+	    #Runs the query
 		$posts = DB::instance(DB_NAME)->select_rows($q);
+		#Pass data to the view
 		$this->template->content->posts = $posts;
+		#Render the view
 		echo $this->template;
 	}	
 	

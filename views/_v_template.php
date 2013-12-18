@@ -29,14 +29,13 @@
 			<?php if($user): ?>
              <ul class="menu">
 				<li class="menu"><a href='/posts/add'>New Task</a></li> 
-				<li class="menu"><a href='/posts/'>View Task</a></li>
-				<li class="menu"><a href='/posts/users'>Follow(Will Disable)</a></li>
-				<li class="menu"><a href='/users/logout'>Logout</a></li>
+				<li class="menu"><a href='/posts/'>View Tasks</a></li>
+		   <!-- <li class="menu"><a href='/posts/users'>Follow(Will Disable)</a></li> -->				<li class="menu"><a href='/users/logout'>Logout</a></li>
              </ul>
 			<?php else: ?>
-            <ul>
-				<li><a href='/users/signup'>Sign up</a></li>
-				<li><a href='/users/login'>Log in</a></li>         
+            <ul class="menu">
+				<li class="menu"><a href='/users/signup'>Sign up</a></li>
+				<li class="menu"><a href='/users/login'>Log in</a></li>         
             </ul>
 			<?php endif; ?>
 			</menu>

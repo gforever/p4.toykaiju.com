@@ -6,8 +6,8 @@ CSCIE15
 */
 
 body {
-	background-color: #1C263C;
-	color:#FFFFFF;
+	background-color:#050F4E;
+	color:#CCCCCC;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size:16px;
 	text-align:center;
@@ -31,14 +31,8 @@ ul{
 	padding-right: 20px;
 }*/
 
-h1{
-	color: #9CFF00;
-}
-h2 {
-	color: #B6C0D2;
-}
-h3 {
-	color: #9CFF00;
+h1, h2, h3{
+	color: #FFCC00;
 }
 
 a:link {

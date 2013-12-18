@@ -13,8 +13,9 @@
 	<script type="text/javascript" src="/js/mi2du.js"></script>										
 	<!-- Controller Specific JS/CSS -->
 	<link rel="stylesheet" href="/css/mi2du.css" type="text/css">  
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
+  	<!--using local copy of jquery-ui to modify tooltip style-->
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">  
     
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 		
@@ -25,12 +26,12 @@
 	<div class="navigation">
 		<nav>
 			<menu> 
-            	<!--<img src="/imgs/th_mi2du.png" width="25" height="25" class="minilogo" alt="Mi2Du_mini_logo" /> -->
 			<?php if($user): ?>
              <ul class="menu">
 				<li class="menu"><a href='/posts/add'>New Task</a></li> 
 				<li class="menu"><a href='/posts/'>View Tasks</a></li>
-		   <!-- <li class="menu"><a href='/posts/users'>Follow(Will Disable)</a></li> -->				<li class="menu"><a href='/users/logout'>Logout</a></li>
+		   <!-- <li class="menu"><a href='/posts/users'>Follow(Will Disable)</a></li> -->
+                <li class="menu"><a href='/users/logout'>Logout</a></li>
              </ul>
 			<?php else: ?>
             <ul class="menu">

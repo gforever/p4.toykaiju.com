@@ -38,11 +38,12 @@
 	    <?=Time::display($post['created'])?><br /> 
     </div> <br /> -->
       </li> 
-</ul>
-</div>     
-
     <?php if($post['priority'] == 'urgent')
 		echo "<script> $('#post".$post['post_id']."').css('color', 'red'); </script>";
     ?> 
 
 <?php endforeach; ?>
+      
+</ul>
+</div>     
+

@@ -11,3 +11,6 @@
 
     <input type='Submit' value='Edit Task' required>
 </form>
+
+<!-- Ajax results will go here -->
+<div id='results'></div>

@@ -9,9 +9,10 @@ class posts_controller extends base_controller{
 	#	}
 	#}
 	public function add() {
-		$this->template->title = "Mi2Du Add Task"; 
+		
 		#Sets up the view
-        //Add title to post in database /////////// NEW PART////////////////////
+		$this->template->title = "Mi2Du Add Task"; 
+        //Add task title to post in database /////////// NEW P4////////////////////
 		$this->template->task = View::instance("v_posts_add");
 		$this->template->content = View::instance("v_posts_add");
 
@@ -51,12 +52,12 @@ class posts_controller extends base_controller{
 		echo $view;
 		
 	   //Sends a simple message back to user
-	    echo "Your task was added";
+	    #echo "Your task was added";
 	   
 	    #Then send user back to view posts
         //Router::redirect('/posts'); //////////////////
 	}
-###########+1 FEATURES##########################################################
+#####################################################################
 	public function delete($post_id) {
 		$q= 'SELECT
 			*
@@ -94,6 +95,15 @@ class posts_controller extends base_controller{
 
          # Pass data to the view
          $this->template->content->post = $post;
+		 
+		 
+		 # Load JS files ********
+    	 $client_files_body = Array(
+         "/js/jquery.form.js",
+         "/js/posts_edit.js"
+    	  );
+		  
+  	     //$this->template->client_files_body = Utils::load_client_files($client_files_body);
 				
          # Render view
          echo $this->template;
@@ -101,6 +111,10 @@ class posts_controller extends base_controller{
     }        
     
 	public function p_edit($post_id) {
+		#Sets up the data **		
+		$_POST['edited']  = Time::now();
+		$_POST['modified'] = Time::now();
+		
 		#Finds the post with matching Post ID
 		$q= 'SELECT
 			*
@@ -113,21 +127,73 @@ class posts_controller extends base_controller{
 		if ($this->user->user_id == $poster_id) {
 			$task = $_POST['task'];
 			$content = $_POST['content'];
-			$priority =$_POST['priority'];
+			$priority = $_POST['priority'];
 			# Update their row in the DB with the new token
 			$data = Array(
 				'task' =>$task,
 				'content' => $content,
 				'priority'=> $priority
 			);
-			DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
-			Router::redirect('/posts');
+			$post_id = DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id); //**
+		
+			# Set up the view **
+    		$view = View::instance('v_posts_p_edit');
+			
+			 # Pass data to the view **
+			 $view->task  = $_POST['task'];
+			 $content = $_POST['content'];
+  			 $priority = $_POST['priority'];
+			 $view->edited = $_POST['edited'];
+			 $view->post_id = $post_id;		
+		
+			// Send a simple message back**
+		    #echo "Your post was edited";
+			//Router::redirect('/posts');
+			 # Render the view
+		     echo $view;
 		}
 		else {
 			die('No Permission to edit. Please login <a href="/users/login">here.</a>');
 		}
 	}  
-########END OF +1 FEATURES#######################################################
+###############################################################
+
+public function control_panel() {
+
+    # Setup view
+        $this->template->content = View::instance('v_posts_control_panel');
+        $this->template->title   = "Control Panel";
+
+    # JavaScript files
+        $client_files_body = Array(
+            '/js/jquery.form.js', 
+            '/js/posts_control_panel.js');
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);
+
+    # Render template
+        echo $this->template;
+}
+
+public function p_control_panel() {
+
+    $data = Array();
+
+    # Find out how many posts there are
+    $q = "SELECT count(post_id) FROM posts";
+    $data['post_count'] = DB::instance(DB_NAME)->select_field($q);
+
+    # Find out how many users there are
+    $q = "SELECT count(user_id) FROM users";
+    $data['user_count'] = DB::instance(DB_NAME)->select_field($q);
+
+    # Find out when the last post was created
+    $q = "SELECT created FROM posts ORDER BY created DESC LIMIT 1";
+    $data['most_recent_post'] = Time::display(DB::instance(DB_NAME)->select_field($q));
+
+    # Send back json results to the JS, formatted in json
+    echo json_encode($data);
+}
+###############################################################
 		
 	public function index() {
 		$this->template->title = "Mi2Du View Tasks"; 

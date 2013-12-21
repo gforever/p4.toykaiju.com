@@ -128,8 +128,15 @@ class posts_controller extends base_controller{
 		if ($this->user->user_id == $poster_id) {
 			$task = $_POST['task'];
 			$content = $_POST['content'];
-			$priority = $_POST['priority'];
-			$crossout = $_POST['crossout'];
+			
+			$priority = $crossout =0;
+			if (isset($_POST['priority'])) {
+       		$priority = $_POST['priority'];
+			}
+			if (isset($_POST['crossout'])) {
+	        $crossout = $_POST['crossout'];
+			}
+			
 			# Update their row in the DB with the new token
 			$data = Array(
 				'task' =>$task,

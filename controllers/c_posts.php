@@ -128,11 +128,13 @@ class posts_controller extends base_controller{
 			$task = $_POST['task'];
 			$content = $_POST['content'];
 			$priority = $_POST['priority'];
+			$crossout = $_POST['crossout'];
 			# Update their row in the DB with the new token
 			$data = Array(
 				'task' =>$task,
 				'content' => $content,
-				'priority'=> $priority
+				'priority'=> $priority,
+				'crossout'=> $crossout
 			);
 			$post_id = DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id); //**
 		
@@ -143,6 +145,7 @@ class posts_controller extends base_controller{
 			 $view->task  = $_POST['task'];
 			 $content = $_POST['content'];
   			 $priority = $_POST['priority'];
+			 $crossout = $_POST['crossout'];
 			 $view->edited = $_POST['edited'];
 			 $view->post_id = $post_id;		
 		
@@ -206,7 +209,7 @@ public function p_control_panel() {
                posts.user_id AS post_user_id,
 			   posts.task,
 			   posts.priority,
-               
+               posts.crossout,
                users.first_name,
                users.last_name
         FROM posts

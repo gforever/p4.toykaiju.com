@@ -139,7 +139,7 @@ class posts_controller extends base_controller{
 			
 			# Update their row in the DB with the new token
 			$data = Array(
-				'task' =>$task,
+				'task' => $task,
 				'content' => $content,
 				'priority'=> $priority,
 				'crossout'=> $crossout
@@ -150,12 +150,19 @@ class posts_controller extends base_controller{
     		$view = View::instance('v_posts_p_edit');
 			
 			 # Pass data to the view **
-			 $view->task  = $_POST['task'];
-			 $content = $_POST['content'];
-  			 $priority = $_POST['priority'];
-			 $crossout = $_POST['crossout'];
+			// $view->task  = $_POST['task'];
+			// $content = $_POST['content'];
+  			 
+			// $priority = $crossout =0;
+			// if (isset($_POST['priority'])) {
+       		// $priority = $_POST['priority'];
+			// }
+			// if (isset($_POST['crossout'])) {
+	        // $crossout = $_POST['crossout'];
+			// }
+			 
 			 $view->edited = $_POST['edited'];
-			 $view->post_id = $post_id;		
+			 $view->postid = $post['post_id'];
 		
 			// Send a simple message back**
 		    #echo "Your post was edited";

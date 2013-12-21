@@ -99,12 +99,11 @@ class posts_controller extends base_controller{
 		 
 		 # Load JS files ********
     	 $client_files_body = Array(
-         "/js/jquery.form.js"//,
-         //"/js/posts_edit.js"
+         "/js/jquery.form.js",
+         "/js/posts_edit.js"
     	  );
 		  
-  	     //$this->template->client_files_body = Utils::load_client_files($client_files_body);
-		 
+  	     $this->template->client_files_body = Utils::load_client_files($client_files_body);	 
 				
          # Render view
          echo $this->template;

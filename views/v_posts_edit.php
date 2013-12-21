@@ -1,4 +1,4 @@
-<form method='post' action='/posts/p_edit/<?=$post['post_id']?>'>
+<form id = 'edit-post' data-post_id='<?=$post['post_id']?>' method='post' action='/posts/p_edit/<?=$post['post_id']?>'>
 
     <textarea rows="1" cols="80" name='task' title="Edit Task Title" required><?=$post['task']?></textarea><br />
     <textarea rows="5" cols="100" name='content' title="Edit Task Detail"><?=$post['content']?></textarea> 
@@ -16,12 +16,12 @@
     ?> 
     <input type='Submit' value='Edit Task' required>
 </form>
-<script src="/js/jquery.form.js"></script>
+<!-- <script src="/js/jquery.form.js"></script>
 
 <script>// Set up the options for ajax
 	var options = { 
 		type: 'POST',
-		url: '/posts/p_edit/<?=$post['post_id']?>',
+		url: '/posts/p_edit/< ?=$post['post_id']?>',
 		beforeSubmit: function() {
 			$('#results').html("Editing...");
 		},
@@ -32,7 +32,7 @@
 	
 	// Using the above options, ajax'ify the form
 	$('form').ajaxForm(options);
-</script>
+</script> -->
 
 <!-- Ajax results will go here -->
 <div id='results'></div>

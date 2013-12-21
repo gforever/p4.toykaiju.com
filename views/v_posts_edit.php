@@ -1,5 +1,4 @@
 <form method='post' action='/posts/p_edit/<?=$post['post_id']?>'>
-<script src="/js/jquery.form.js"></script>
 
     <textarea rows="1" cols="80" name='task' title="Edit Task Title" required><?=$post['task']?></textarea><br />
     <textarea rows="5" cols="100" name='content' title="Edit Task Detail"><?=$post['content']?></textarea> 
@@ -17,6 +16,7 @@
     ?> 
     <input type='Submit' value='Edit Task' required>
 </form>
+<script src="/js/jquery.form.js"></script>
 
 <script>// Set up the options for ajax
 	var options = { 

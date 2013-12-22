@@ -232,6 +232,13 @@ public function processsortable(){
                $data = Array('ranking'=> $ranking);
                $post[] = DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
        }
+       echo "DEBUGGING:<br />";
+       echo "GET['postItem']<br /><pre>";
+       print_r ($_GET);
+       echo "</pre><br />";
+       echo "post[]<br /><pre>";
+       print_r ($post);
+       echo "</pre>";
 }
    		
 	public function index() {

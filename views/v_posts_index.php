@@ -10,7 +10,7 @@
          </span> -->
  <!--Displays the post                     class="ui-state-default"--> 
        <li id="postItem_<?=$post['post_id']?>">
-       <img src="..\imgs\arrow.png" alt="move" width="16" height="16" class="handle" />   
+       <img src="\imgs\arrow.png" alt="move" width="16" height="16" class="handle" />   
           <span class="postTitle">
               <?=$post['task']?>  <!--NEW -->
           </span>

@@ -237,8 +237,11 @@ public function processsortable(){
        #print_r ($_GET);
        #echo "</pre><br />";
        #echo "post[]<br /><pre>";
-       print_r ($post);
+       #print_r ($post);
        #echo "</pre>";
+	   if (!$post) {
+		   echo 'error';
+	   }
 }
    		
 	public function index() {

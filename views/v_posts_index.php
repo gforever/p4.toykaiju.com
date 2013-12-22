@@ -20,7 +20,9 @@
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
         <?php if($user->user_id == $post['post_user_id']): ?>                
          <a href=/posts/edit/<?=$post['post_id']?> class="editDel">Edit</a> - 
-         <a href=/posts/delete/<?=$post['post_id']?> class="editDel">Delete</a>     
+         <a href=/posts/delete/<?=$post['post_id']?> class="editDel">Delete</a> 
+         ......<?=$post['ranking']?> - 
+         <?=$post['created']?>.......
         <?php endif; ?>
                                   
   <!--Displays the time -->

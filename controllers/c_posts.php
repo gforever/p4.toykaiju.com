@@ -234,7 +234,7 @@ public function processsortable(){
        }
        echo "DEBUGGING:<br />";
        echo "GET['postItem']<br /><pre>";
-       print_r ($_GET['postItem']);
+       print_r ($_GET);
        echo "</pre><br />";
        echo "post[]<br /><pre>";
        print_r ($post);

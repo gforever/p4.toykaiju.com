@@ -216,14 +216,22 @@ public function p_control_panel() {
 }
 ###############################################################    
 
-public function processsortable(){
-		foreach ($_GET['postItem'] as $ranking => $post_id) {
-			$sql[] = "UPDATE `posts` SET `ranking` = $ranking WHERE `post_id` = $post_id";
-		}
-		echo ('DEBUGGING:'); 
-		print_r ($sql);
+#public function processsortable(){
+#		foreach ($_GET['postItem'] as $ranking => $post_id) {
+#			$sql[] = "UPDATE `posts` SET `ranking` = $ranking WHERE `post_id` = $post_id";
+#		}
+		
+		#echo ('DEBUGGING:'); 
+		#print_r ($sql);
 		#Runs the query
-		$posts = DB::instance(DB_NAME)->select_rows($sql);
+#		$posts = DB::instance(DB_NAME)->select_rows($sql);
+#}
+
+public function processsortable(){
+       foreach ($_GET['postItem'] as $ranking => $post_id) {
+               $query = "UPDATE `posts` SET `ranking` = $ranking WHERE `post_id` = $post_id";
+               $post[] = DB::instance(DB_NAME)->select_rows($query);
+       }
 }
    		
 	public function index() {

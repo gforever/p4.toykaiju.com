@@ -1,6 +1,6 @@
-<pre>
+<!--<pre>
 <div id="info">DEBUGGING: Waiting for update</div>
-</pre>
+</pre>-->
                        
 <ul id="sortable">
 <?php foreach($posts as $post): ?>
@@ -21,8 +21,6 @@
         <?php if($user->user_id == $post['post_user_id']): ?>                
          <a href=/posts/edit/<?=$post['post_id']?> class="editDel">Edit</a> - 
          <a href=/posts/delete/<?=$post['post_id']?> class="editDel">Delete</a> 
-         ......<?=$post['ranking']?> - 
-         <?=$post['created']?>.......
         <?php endif; ?>
                                   
   <!--Displays the time -->

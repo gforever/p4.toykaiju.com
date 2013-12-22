@@ -230,15 +230,16 @@ public function p_control_panel() {
 public function processsortable(){
        foreach ($_GET['postItem'] as $ranking => $post_id) {
                $data = Array('ranking'=> $ranking);
-               $post[] = DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
+               DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
+			   #$post[] = DB::instance(DB_NAME)->update('posts',$data, 'WHERE post_id ='.$post_id);
        }
-       echo "DEBUGGING:<br />";
-       echo "GET['postItem']<br /><pre>";
-       print_r ($_GET);
-       echo "</pre><br />";
-       echo "post[]<br /><pre>";
-       print_r ($post);
-       echo "</pre>";
+       #echo "DEBUGGING:<br />";
+       #echo "GET['postItem']<br /><pre>";
+       #print_r ($_GET);
+       #echo "</pre><br />";
+       #echo "post[]<br /><pre>";
+       #print_r ($post);
+       #echo "</pre>";
 }
    		
 	public function index() {

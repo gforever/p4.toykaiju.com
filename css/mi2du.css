@@ -93,7 +93,11 @@ a:hover {
 .postCanvas{
 	text-align:center;
 }
-li{
+.handle{
 /*	text-align:left;*/
 	cursor:move;
+}
+
+#password-error {
+	color:white;
 }

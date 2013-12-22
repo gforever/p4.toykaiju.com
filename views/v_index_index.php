@@ -9,6 +9,5 @@
 <?php else: ?>
   <h1> Welcome to Mi2Du</h1> <br /> 
   <img src="/imgs/mi2du.png" width="300" height="300" alt="Mi2DuLogo" /> <br />
-  <p>Please sign up or log in for your to do list! <br />
-  Features include: Add a Task (Ajax), Edit a task, Delete a task, Mark task urgent (JS). jQuery Tooltip, jQuery to sort tasks. </p>
+  <p>Please sign up or log in to your Mi2Du list! <br /></p>
 <?php endif; ?>

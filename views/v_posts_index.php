@@ -1,5 +1,5 @@
 <pre>
-<div id="info">DEBUGGING: Waiting for update</div>
+	<div id="info"><!--DEBUGGING: Waiting for update--></div>
 </pre>
                        
 <ul id="sortable">
@@ -10,7 +10,6 @@
          </span> -->
  <!--Displays the post                     class="ui-state-default"--> 
        <li id="postItem_<?=$post['post_id']?>">
-       <img src="/imgs/drag.png" alt="move" width="20" height="20" class="handle" />   
           <span class="postTitle">
               <?=$post['task']?>  <!--NEW -->
           </span>
@@ -19,8 +18,9 @@
           </span>                                   
        <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
         <?php if($user->user_id == $post['post_user_id']): ?>                
-         <a href=/posts/edit/<?=$post['post_id']?> class="editDel">Edit</a> - 
-         <a href=/posts/delete/<?=$post['post_id']?> class="editDel">Delete</a> 
+          <a href=/posts/edit/<?=$post['post_id']?> class="editDel"><img src="/imgs/edit.png" width="12" height="12" alt="edit" title="edit"/></a> - 
+          <a href=/posts/delete/<?=$post['post_id']?> class="editDel"><img src="/imgs/delete.png" width="12" height="12" alt="delete" title="delete"/></a> -  
+          <img src="/imgs/drag.png" width="10" height="12" class="handle" alt="drag" title="Drag to change order"/>   
         <?php endif; ?>
                                   
   <!--Displays the time -->

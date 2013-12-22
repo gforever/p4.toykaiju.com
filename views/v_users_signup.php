@@ -6,7 +6,7 @@
 	Last name: <input type='text' name='last_name' required title="Enter your last name"><br />
 	Email: <input type='email' name='email' required title="Enter your email"><br />
     Password: <input type='password' id="password" name='password' maxlength='20' required title="Create a password"><br />
-    <div id='pError'>Max 20 characters</div>
+    <div id='password-error'><!--Max 20 characters--></div>
     
         <?php if(isset($error)): ?>
         <div class='error'>
@@ -15,4 +15,4 @@
         <br>
     <?php endif; ?>	
 	<input type='submit' value='Sign Up'>
-</form>
+</form> 

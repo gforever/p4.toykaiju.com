@@ -5,18 +5,13 @@
 
 class posts_controller extends base_controller{
 	
-	#public function __construct() {
-	#	parent::__construct();
-	#    if(!$this->user) {
-	#		die("Members only");
-	#	}
-	#}
 	public function add() {
 
 		#Sets up the view
 		$this->template->title = "Mi2Du Add Task"; 
-        //Add task title to post in database /////////// NEW P4////////////////////
+        //Add task title to post **
 		$this->template->task = View::instance("v_posts_add");
+		//Add task details to post **
 		$this->template->content = View::instance("v_posts_add");
 
 		#Loads the JS files
@@ -151,27 +146,15 @@ class posts_controller extends base_controller{
 		
 			# Set up the view **
     		$view = View::instance('v_posts_p_edit');
-			
-			 # Pass data to the view **
-			// $view->task  = $_POST['task'];
-			// $content = $_POST['content'];
-  			 
-			// $priority = $crossout =0;
-			// if (isset($_POST['priority'])) {
-       		// $priority = $_POST['priority'];
-			// }
-			// if (isset($_POST['crossout'])) {
-	        // $crossout = $_POST['crossout'];
-			// }
 			 
-			 $view->edited = $_POST['edited'];
-			 $view->postid = $post['post_id'];
+			$view->edited = $_POST['edited'];
+			$view->postid = $post['post_id'];
 		
 			// Send a simple message back**
 		    #echo "Your post was edited";
 			//Router::redirect('/posts');
-			 # Render the view
-		     echo $view;
+			# Render the view
+		    echo $view;
 		}
 		else {
 			die('No Permission to edit. Please login <a href="/users/login">here.</a>');
@@ -215,17 +198,6 @@ public function p_control_panel() {
     echo json_encode($data);
 }
 ###############################################################    
-
-#public function processsortable(){
-#		foreach ($_GET['postItem'] as $ranking => $post_id) {
-#			$sql[] = "UPDATE `posts` SET `ranking` = $ranking WHERE `post_id` = $post_id";
-#		}
-		
-		#echo ('DEBUGGING:'); 
-		#print_r ($sql);
-		#Runs the query
-#		$posts = DB::instance(DB_NAME)->select_rows($sql);
-#}
 
 public function processsortable(){
        foreach ($_GET['postItem'] as $ranking => $post_id) {
@@ -281,67 +253,4 @@ public function processsortable(){
 		#Render the view
 		echo $this->template;
 	}	
-	
-	public function users() {
-		# Set up view
-		$this->template->content = View::instance("v_posts_users");
-		
-		# Set up query to get all users
-		$q = 'SELECT *
-			FROM users';
-			
-		# Run query
-		$users = DB::instance(DB_NAME)->select_rows($q);
-		
-		# Set up query to get all connections from users_users table
-		$q = 'SELECT *
-			FROM users_users
-			WHERE user_id = '.$this->user->user_id;
-			
-		# Run query
-		$connections = DB::instance(DB_NAME)->select_array($q,'user_id_followed');
-		
-		# Pass data to the view
-		$this->template->content->users       = $users;
-		$this->template->content->connections = $connections;
-		
-		# Render view
-		echo $this->template;
-	}
-	
-	/*-------------------------------------------------------------------------------------------------
-	Creates a row in the users_users table representing that one user is following another
-	-------------------------------------------------------------------------------------------------*/
-	public function follow($user_id_followed) {
-	
-	    # Prepare the data array to be inserted
-	    $data = Array(
-	        "created"          => Time::now(),
-	        "user_id"          => $this->user->user_id,
-	        "user_id_followed" => $user_id_followed
-	        );
-	
-	    # Do the insert
-	    DB::instance(DB_NAME)->insert('users_users', $data);
-	
-	    # Send them back
-	    Router::redirect("/posts/users");
-	}
-	
-	
-	/*-------------------------------------------------------------------------------------------------
-	Removes the specified row in the users_users table, removing the follow between two users
-	-------------------------------------------------------------------------------------------------*/
-	public function unfollow($user_id_followed) {
-	
-	    # Set up the where condition
-	    $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
-	    
-	    # Run the delete
-	    DB::instance(DB_NAME)->delete('users_users', $where_condition);
-	
-	    # Send them back
-	    Router::redirect("/posts/users");
-	
-	}
 }

@@ -264,9 +264,9 @@ public function processsortable(){
 
         INNER JOIN users 
            ON posts.user_id = users.user_id
-        WHERE users.user_id = '.$this->user->user_id; '.
+        WHERE users.user_id = '.$this->user->user_id.'
 		ORDER BY 
-			posts.ranking DESC,
+			posts.ranking ASC,
 			posts.created DESC';		
 		
 		//Only allow logged in user to see his/her own tasks. 

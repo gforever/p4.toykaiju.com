@@ -1,5 +1,5 @@
 <pre>
-<div id="info">Waiting for update</div>
+<div id="info">DEBUGGING: Waiting for update</div>
 </pre>
                        
 <ul id="sortable">

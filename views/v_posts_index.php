@@ -1,6 +1,6 @@
-<!--<pre>
+<pre>
 <div id="info">DEBUGGING: Waiting for update</div>
-</pre>-->
+</pre>
                        
 <ul id="sortable">
 <?php foreach($posts as $post): ?>

@@ -264,10 +264,10 @@ public function processsortable(){
 
         INNER JOIN users 
            ON posts.user_id = users.user_id
-        WHERE users.user_id = '.$this->user->user_id; 
-		#ORDER BY 
-		#	posts.ranking ASC,
-		#	posts.created DESC';		
+        WHERE users.user_id = '.$this->user->user_id.'
+		ORDER BY 
+			posts.ranking ASC,
+			posts.created DESC';		
 		
 		//Only allow logged in user to see his/her own tasks (line 267).  Join will connect posts to the user id. We will arrange the order by rank and date created. 	
 

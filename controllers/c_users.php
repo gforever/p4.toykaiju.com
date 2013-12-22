@@ -89,6 +89,10 @@ class users_controller extends base_controller {
 	}
 
     public function logout() {
+		/*if(!$user) {
+           Router::redirect('/users/login');
+        }*/ //Tried Susan & Johanna's suggestion but will send all users including logged in users back to login screen. 
+
 		$this->template->title = "Mi2Du Logout"; 
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		$data = Array('token' => $new_token);

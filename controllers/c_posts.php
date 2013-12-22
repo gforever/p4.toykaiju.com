@@ -1,4 +1,7 @@
 <?php
+		/*if(!$user) {
+           Router::redirect('/users/login');
+        }*/ //Tried Susan & Johanna's suggestion but will send all users including logged in users back to login screen. 
 
 class posts_controller extends base_controller{
 	
@@ -9,7 +12,7 @@ class posts_controller extends base_controller{
 	#	}
 	#}
 	public function add() {
-		
+
 		#Sets up the view
 		$this->template->title = "Mi2Du Add Task"; 
         //Add task title to post in database /////////// NEW P4////////////////////
@@ -59,6 +62,7 @@ class posts_controller extends base_controller{
 	}
 #####################################################################
 	public function delete($post_id) {
+		
 		$q= 'SELECT
 			*
 			FROM posts
@@ -173,7 +177,7 @@ class posts_controller extends base_controller{
 			die('No Permission to edit. Please login <a href="/users/login">here.</a>');
 		}
 	}  
-###############################################################
+#######################################
 
 public function control_panel() {
 
@@ -210,9 +214,20 @@ public function p_control_panel() {
     # Send back json results to the JS, formatted in json
     echo json_encode($data);
 }
-###############################################################
-		
+###############################################################    
+
+public function processsortable(){
+		foreach ($_GET['postItem'] as $ranking => $post_id) {
+			$sql[] = "UPDATE `posts` SET `ranking` = $ranking WHERE `post_id` = $post_id";
+		}
+		print_r ($sql);
+}
+   		
 	public function index() {
+		/*if(!$user) {
+           Router::redirect('/users/login');
+        }*/ //Tried Susan & Johanna's suggestion but will send all users including logged in users back to login screen. 
+		
 		$this->template->title = "Mi2Du View Tasks"; 
         $this->template->content = View::instance('v_posts_index');
 		//ADD ITEMS HERE to display

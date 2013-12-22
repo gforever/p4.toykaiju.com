@@ -1,6 +1,15 @@
-<pre>
-<div id="info">Waiting for update</div>
-</pre>
+<?php  if(!$user) {
+           Router::redirect('/users/login');
+        } ?>    
+    
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+
+<div class="postCanvas">
                        
 <ul id="sortable">
 <?php foreach($posts as $post): ?>
@@ -8,9 +17,8 @@
  <!--      <span class="uName">
                    < ?=$post['first_name'] .': '?> 
          </span> -->
- <!--Displays the post                     class="ui-state-default"--> 
-       <li id="postItem_<?=$post['post_id']?>">
-       <img src="..\imgs\arrow.png" alt="move" width="16" height="16" class="handle" />   
+ <!--Displays the post -->
+       <li id="post<?=$post['post_id']?>" class="ui-state-default">  
           <span class="postTitle">
               <?=$post['task']?>  <!--NEW -->
           </span>
@@ -29,16 +37,13 @@
       </div> <br /> -->
       </li> 
     <?php if($post['priority'] == 'urgent')
-                echo "<script> $('#postItem_".$post['post_id']."').css('color', 'red'); </script>";
+                echo "<script> $('#post".$post['post_id']."').css('color', 'red'); </script>";
     ?>
     <?php if($post['crossout'] == '1')
-                echo "<script> $('#postItem_".$post['post_id']."').css('text-decoration', 'line-through'); </script>";
+                echo "<script> $('#post".$post['post_id']."').css('text-decoration', 'line-through'); </script>";
     ?> 
 
 <?php endforeach; ?>
       
-</ul>  
-
-<form action="process-sortable.php" method="post" name="sortables">
-	<input type="hidden" name="test-log" id="test-log" />
-</form>
+</ul>
+</div>     

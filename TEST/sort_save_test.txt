@@ -1,0 +1,107 @@
+###############################################################
+mi2du.js
+###############################################################
+//Sets up jQuery sortable
+$(function() {
+  $( "#sortable" ).sortable({
+	  update: function(event, ui){
+			var postData = $(this).sortable('serialize');  
+			console.log(postData);
+			
+			$.post('save', {list: postData}, function(o){
+				console.log(o);
+			}, 'json');
+	  }
+  });
+  $( "#sortable" ).disableSelection();
+});
+
+
+###############################################################
+v_posts_index.php
+###############################################################
+<ul id="sortable">
+<?php foreach($posts as $post): ?>
+       <!--Displays the post -->
+       <?php
+             $item = array(
+			  
+				   '<li id="post $post.post_id" class="ui-state-default">  
+					  <span class="postTitle">
+						  $post.task
+					  </span>
+					  <span class="postContent">
+						  " : ".$post.content
+					  </span>                                   
+				   <!--If the user id  matches with the user who made the post, then provide the option of editing or deleting entry -->
+					if($user->user_id == $post.post_user_id:                 
+					 <a href=/posts/edit/$post.post_id class="editDel">Edit</a> - 
+					 <a href=/posts/delete$post.post_id class="editDel">Delete</a>     
+					<?php endif; ?>
+											  
+			       <!--Displays the time -->
+			       <!--<div class="postDate"> 
+					Time::display($post.created)?><br /> 
+				  </div> <br /> -->
+				  </li>' 
+
+			 );
+		$db->query('SELECT posts.post_id,
+               posts.content,
+               posts.created,
+               posts.user_id AS post_user_id,
+			   posts.task,
+			   posts.priority,
+               posts.crossout,
+               users.first_name,
+               users.last_name
+        FROM posts');
+		$order = $q->get(); 
+		$order = explode($order[0]['posts']);
+		print_r($order);
+	   ?>
+
+    <?php if($post['priority'] == 'urgent')
+                echo "<script> $('#post".$post['post_id']."').css('color', 'red'); </script>";
+    ?>
+    <?php if($post['crossout'] == '1')
+                echo "<script> $('#post".$post['post_id']."').css('text-decoration', 'line-through'); </script>";
+    ?> 
+
+<?php endforeach; ?>
+      
+</ul>
+</div>     
+
+###############################################################
+c_posts.php
+###############################################################
+public function save(){
+    $list = $_POST['list'];
+	$output = array();
+	$list = parse_str($list, $output);
+	//print_r($output);
+	
+	$save = implode(',', $output['item']);
+	
+    //echo $list;
+	echo $save;
+	
+	$db->query("UPDATE list SET `post` = '$save'");
+	//do some error checking
+}
+
+
+###############################################################
+config.php
+###############################################################
+
+#require 'libs/mysql.php'; #THIS FILE DOESNT EXIST ANYMORE
+#$config = array();
+#$config['host'] = 'localhost';
+#$config['user'] = 'root';
+#$config['pass'] = '';
+#$config['table'] = 'sortable';
+#$db = new DB($config);
+
+###############################################################

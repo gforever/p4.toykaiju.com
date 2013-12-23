@@ -2,7 +2,7 @@
 
     <textarea rows="1" cols="80" name='task' title="Edit Task Title" required><?=$post['task']?></textarea><br />
     <textarea rows="5" cols="100" name='content' title="Edit Task Detail"><?=$post['content']?></textarea> 
-
+    <p>
     <?php if($post['priority'] == 'urgent')
 		    echo "Urgent <input type='checkbox' name='priority' value='urgent' title='Edit Priority' checked>"; 
     ?> 
@@ -13,7 +13,7 @@
 		    echo "Cross off? <input type='checkbox' name='crossout' value='1' title='Cross off item '>";
 		  else 
 		    echo "Remove Crossout? <input type='checkbox' name='crossout' value='0' title='Cross off item '>";
-    ?> 
+    ?> </p>
     <input type='Submit' value='Edit Task' required>
 </form>
 <!-- <script src="/js/jquery.form.js"></script>
